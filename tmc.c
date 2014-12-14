@@ -5,7 +5,7 @@
 #include "tmc_events.h"
 
 #define PI 0xC401
-#define GROUP 0x8008
+#define GROUP_8A 0x8000
 
 
 
@@ -57,8 +57,9 @@ void main()
         int s = strlen(buf);
         *(buf+s-1) = 0;
         parsemsg(buf);
-        if (tmcmsg.block2 != GROUP) printf("%s\t-\n", buf);
-        else printf("%s\t%s\n", buf, getevent());
+        if ((tmcmsg.block2 & 0xF800) == GROUP_8A && 
+            (tmcmsg.block2 & 0x1F) == 0x8) printf("%s\t%s\n", buf, getevent());
+        else printf("%s\t-\n", buf);
     }
 }
 
