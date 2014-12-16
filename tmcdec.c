@@ -49,7 +49,7 @@ const char * getevent()
     return eventmsg[eventcode];   
 }
 
-void main()
+int main()
 {
     char buf[32];
     load_eventcode();
@@ -61,5 +61,6 @@ void main()
             (tmcmsg.block2 & 0x1F) == 0x8) printf("%s\t%s\n", buf, getevent());
         else printf("%s\t-\n", buf);
     }
+    return 0;
 }
 
