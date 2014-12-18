@@ -29,6 +29,8 @@ void load_eventcode()
             eventmsg[code] = 
             tmc_events[i][1];
 //            printf("%d=>%s\n", code, eventmsg[code]);
+        } else {
+            eventmsg[code] = 0;
         }
     }
 }
